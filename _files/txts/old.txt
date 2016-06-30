@@ -1,0 +1,29 @@
+/*    public OrientedGraph(String fileName) {
+        super(fileName);
+    }
+
+    public OrientedGraph(String logic.graph, String fx) {
+        super(logic.graph, fx);
+    }*/
+
+    /*public Graph(String fileName) {
+            time = 0;
+            nodeList = new Vector<GraphNode>();
+            nodeList.add(new GraphNode(0));
+            String[] edges = getEdges(fileName);
+            for (String edge : edges) {
+                bunchNodes(edge);
+            }
+        }
+
+        public Graph(String logic.graph, String fx) {
+            time = 0;
+            nodeList = new Vector<GraphNode>();
+            nodeList.add(new GraphNode(0));
+            String[] lines = logic.graph.split("\n");
+            String[] edges = new String[lines.length - 1];
+            System.arraycopy(lines, 1, edges, 0, lines.length - 1);
+            for (String edge : edges) {
+                bunchNodes(edge);
+            }
+        }*/

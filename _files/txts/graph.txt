@@ -1,0 +1,13 @@
+Random logic.graph
+i d 3
+i 
+f f 7
+g f 3
+j i 2
+d b 7
+g d 1
+f a 7
+h a 5
+d i 3
+b j 0
+i

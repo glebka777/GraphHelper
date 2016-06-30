@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.graphApp.MainController">
+   <content>
+      <AnchorPane>
+         <children>
+              <HBox alignment="CENTER" layoutX="210.0" layoutY="35.0" prefHeight="575.0" prefWidth="1650.0" spacing="50.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;">
+                     <children>
+                            <Label alignment="CENTER" prefHeight="27.0" prefWidth="600.0" text="This is your awesome graph :)" />
+                          <ImageView fx:id="graphViewBox" depthTest="DISABLE" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;">
+                     <children>
+                            <Label alignment="CENTER" prefHeight="27.0" prefWidth="600.0" text="DFS Tree" />
+                          <ImageView fx:id="DFSViewBox" depthTest="DISABLE" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;">
+                     <children>
+                            <Label alignment="CENTER" prefWidth="600.0" text="BFS Tree" />
+                          <ImageView fx:id="BFSViewBox" fitHeight="500.0" fitWidth="500.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+               </children>
+              </HBox>
+              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="117.0" layoutX="470.0" layoutY="641.0" stroke="BLACK" strokeLineJoin="BEVEL" strokeType="OUTSIDE" width="1108.0" />
+              <TextField fx:id="BFSTextField" editable="false" layoutX="1290.0" layoutY="655.0" mouseTransparent="true" />
+              <TextArea fx:id="graphTextArea" layoutX="9.0" layoutY="39.0" prefHeight="467.0" prefWidth="190.0" promptText="Enter graph here" />
+              <Button layoutX="1376.0" layoutY="700.0" mnemonicParsing="false" onAction="#BFSButtonClick" text="BFS" />
+              <TextField fx:id="nodeIdTextField" alignment="CENTER" layoutX="1188.0" layoutY="699.0" onMouseClicked="#clearField" onMouseExited="#validateInput" prefHeight="39.0" prefWidth="71.0" text="1" />
+              <Label layoutX="1193.0" layoutY="661.0" text="Start ID" />
+              <Button layoutX="1014.0" layoutY="699.0" mnemonicParsing="false" onAction="#DFSButtonClick" text="DFS" />
+              <Button layoutX="553.0" layoutY="680.0" mnemonicParsing="false" onAction="#graphVisualiseButtonClick" prefHeight="38.0" prefWidth="254.0" text="Visualise graph" />
+              <TextField fx:id="DFSTextField" editable="false" layoutX="929.0" layoutY="655.0" mouseTransparent="true" />
+              <VBox layoutX="9.0" layoutY="521.0" prefHeight="365.0" prefWidth="190.0" spacing="20.0">
+                  <children>
+                      <Button mnemonicParsing="false" onAction="#setExampleGraph" prefHeight="100.0" prefWidth="300.0" text="Example graph" textAlignment="CENTER" wrapText="true" />
+                      <VBox prefHeight="145.0" prefWidth="190.0">
+                          <children>
+                              <ToggleButton fx:id="weightedButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" text="Weighted" />
+                              <Button mnemonicParsing="false" onAction="#createRandomGraph" prefHeight="100.0" prefWidth="203.0" text="Random graph" textAlignment="CENTER" wrapText="true" />
+                          </children>
+                      </VBox>
+                      <Button mnemonicParsing="false" onAction="#clear" prefHeight="50.0" prefWidth="300.0" text="Clear" />
+                  </children>
+              </VBox>
+              <HBox layoutX="542.0" layoutY="782.0" prefHeight="100.0" prefWidth="998.0" spacing="20.0">
+                  <children>
+                      <Button mnemonicParsing="false" onAction="#doEverything" prefHeight="113.0" prefWidth="179.0" text="Go" textAlignment="CENTER" />
+                      <Button fx:id="findCyclesButton" mnemonicParsing="false" onAction="#findCycles" prefHeight="113.0" prefWidth="179.0" text="Cycles (Oriented graph)" textAlignment="CENTER" wrapText="true" />
+                      <Button mnemonicParsing="false" onAction="#topoSort" prefHeight="113.0" prefWidth="179.0" text="Topological sort (Oriented graph)" textAlignment="CENTER" wrapText="true" />
+                      <Button mnemonicParsing="false" onAction="#findSCC" prefHeight="113.0" prefWidth="179.0" text="SCC (Oriented graph)" textAlignment="CENTER" wrapText="true" />
+                      <Button mnemonicParsing="false" onAction="#findArtPoints" prefHeight="113.0" prefWidth="179.0" text="Articulation points (Non-or. graph)" textAlignment="CENTER" wrapText="true" />
+                      <Button mnemonicParsing="false" onAction="#findTree" prefHeight="113.0" prefWidth="179.0" text="Tree (Non-or. graph)" textAlignment="CENTER" wrapText="true" />
+                  </children>
+              </HBox>
+              <VBox alignment="CENTER" layoutX="1609.0" layoutY="647.0" prefHeight="235.0" prefWidth="250.0" spacing="10.0" style="-fx-border-color: black; -fx-background-color: lightgrey;">
+                  <children>
+                      <Label alignment="CENTER" prefHeight="62.0" prefWidth="248.0" style="-fx-border-color: grey;" text="Shortest path (Or. graph)" />
+                      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="250.0" spacing="45.0">
+                          <children>
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" text="From (ID):" />
+                              <TextField fx:id="ssspid1Field" alignment="CENTER" onMouseClicked="#clearField" onMouseExited="#validateInput" prefHeight="30.0" prefWidth="60.0" text="1" />
+                          </children>
+                      </HBox>
+                      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="250.0" spacing="45.0">
+                          <children>
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" text="To (ID):" />
+                              <TextField fx:id="ssspid2Field" alignment="CENTER" onMouseClicked="#clearField" onMouseExited="#validateInput" prefHeight="30.0" prefWidth="60.0" text="1" />
+                          </children>
+                      </HBox>
+                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#findShortestPath" text="Find">
+                          <VBox.margin>
+                              <Insets bottom="5.0" />
+                          </VBox.margin>
+                      </Button>
+                  </children>
+              </VBox>
+              <VBox alignment="CENTER" layoutX="317.0" layoutY="641.0" prefHeight="117.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black;">
+                  <children>
+                      <ToggleButton fx:id="orientedButton" mnemonicParsing="false" onAction="#toggleGraph" prefHeight="38.0" prefWidth="135.0" text="Oriented" />
+                  </children>
+              </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
