@@ -11,7 +11,7 @@ public class TopoSorter {
     private static OrientedGraph graph;
     private static List<Integer> sortedIds;
 
-    public static List<Integer> sort(OrientedGraph graph) {
+    public static List<Integer> sortGraph(OrientedGraph graph) {
         if (CycleFinder.checkAcyclic(graph).isEmpty()) {
             TopoSorter.graph = graph;
             Visualizer.visualizeOrientedGraph(graph);
@@ -19,7 +19,8 @@ public class TopoSorter {
             sortGraph();
             Visualizer.visualizeSpecialGraph(TopoSorter.graph, "_files/dots/sortedgraph.dot");
             return sortedIds;
-        } else {
+        }
+        else {
             return null;
         }
     }

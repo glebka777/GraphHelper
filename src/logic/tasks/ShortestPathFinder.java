@@ -38,7 +38,8 @@ public class ShortestPathFinder {
             markEdges(startNode, endNode);
             Visualizer.visualizeWithShortestPath(graph);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
 

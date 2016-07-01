@@ -41,7 +41,8 @@ public class OrientedGraph extends Graph {
                         + edge.getFirstNode()
                         + "---->"
                         + edge.getSecondNode();
-            } else {
+            }
+            else {
                 string = string
                         + edge.getFirstNode()
                         + "-(" + edge.getWeight() + ")->"
@@ -61,13 +62,15 @@ public class OrientedGraph extends Graph {
             if (!this.contains(nodes[0])) {
                 firstNode = new GraphNode(nodeList.size(), nodes[0]);
                 nodeList.add(firstNode);
-            } else {
+            }
+            else {
                 firstNode = this.getNodeList().get(this.getGraphNodeIdByData(nodes[0]));
             }
             if (!this.contains(nodes[1])) {
                 secondNode = new GraphNode(nodeList.size(), nodes[1]);
                 nodeList.add(secondNode);
-            } else {
+            }
+            else {
                 secondNode = this.getNodeList().get(this.getGraphNodeIdByData(nodes[1]));
             }
             firstNode.addNeighbour(secondNode.getId());
@@ -75,18 +78,19 @@ public class OrientedGraph extends Graph {
                 if (getEdge(firstNode.getId(), secondNode.getId()) == null) {
                     edgeList.add(new Edge(firstNode.getId(), secondNode.getId(), Double.parseDouble(nodes[2]), false));
                 }
-            } else {
+            }
+            else {
                 if (getEdge(firstNode.getId(), secondNode.getId()) == null) {
                     edgeList.add(new Edge(firstNode.getId(), secondNode.getId(), 0, false));
                 }
             }
-        } else
-            if (nodes.length == 1) {
-                if (!this.contains(nodes[0])) {
-                    GraphNode firstNode = new GraphNode(nodeList.size(), nodes[0]);
-                    nodeList.add(firstNode);
-                }
+        }
+        else if (nodes.length == 1) {
+            if (!this.contains(nodes[0])) {
+                GraphNode firstNode = new GraphNode(nodeList.size(), nodes[0]);
+                nodeList.add(firstNode);
             }
+        }
     }
 
 }

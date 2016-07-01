@@ -23,14 +23,14 @@ public class CycleFinder {
         CycleFinder.graph.dfs(id);
         backEdges = findBackEdges();
         acyclic = backEdges.isEmpty();
-//        printResult();
         return backEdges;
     }
 
     private static void printResult() {
         if (acyclic) {
             System.out.println("Graph is acyclic.");
-        } else {
+        }
+        else {
             System.out.println("Graph is cyclic.");
             System.out.println("Back edges: ");
             for (String backEdge : backEdges) {

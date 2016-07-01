@@ -1,8 +1,5 @@
-package ui.simpleGraphApp;
+package ui.hugeMatrixGraphApp;
 
-import logic.graph.Graph;
-import logic.graph.OrientedGraph;
-import ui.graphApp._tools.AlertBox;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -14,8 +11,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import logic.graph.Graph;
+import logic.graph.OrientedGraph;
 import logic.util.Tools;
 import logic.util.Visualizer;
+import ui.graphHelperApp._tools.AlertBox;
 
 import java.io.File;
 
@@ -23,12 +23,15 @@ public class SingleGraphApp extends Application {
 
     public static double WIDTH;
     public static double HEIGHT;
-
-    private Scene mainScene;
     private final ImageView imgBox = new ImageView();
+    private Scene mainScene;
     private TextArea textArea;
     private TextField pngPathField;
     private ToggleButton orientedButton;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -44,7 +47,7 @@ public class SingleGraphApp extends Application {
         HEIGHT = visualBounds.getHeight();
 
         Button button = new Button("Visualise");
-        button.setOnAction(event -> visualiseMatrixGraph());
+        button.setOnAction(event->visualiseMatrixGraph());
         orientedButton = new ToggleButton("Oriented");
         textArea = new TextArea();
         textArea.setMaxWidth(WIDTH / 100 * 25);
@@ -57,7 +60,7 @@ public class SingleGraphApp extends Application {
         right.setPrefWidth(WIDTH / 100 * 70);
         right.setStyle("-fx-border-color: black");
 
-        VBox left = new VBox(textArea, new HBox(button, orientedButton){{
+        VBox left = new VBox(textArea, new HBox(button, orientedButton) {{
             setAlignment(Pos.CENTER);
             setSpacing(WIDTH / 100 * 2);
         }}, pngPathField);
@@ -71,7 +74,7 @@ public class SingleGraphApp extends Application {
         mainScene = new Scene(main, WIDTH, HEIGHT);
     }
 
-    private void visualiseMatrixGraph(){
+    private void visualiseMatrixGraph() {
         if (textArea.getText().isEmpty()) {
             return;
         }
@@ -82,7 +85,8 @@ public class SingleGraphApp extends Application {
         }
         if (orientedButton.isSelected()) {
             graph = new OrientedGraph(edgesArray);
-        } else {
+        }
+        else {
             graph = new Graph(edgesArray);
         }
         Visualizer.visualizeMatrixGraph(graph);
@@ -95,7 +99,7 @@ public class SingleGraphApp extends Application {
         pngPathField.setText(Tools.getMatrixGraphPngPath());
     }
 
-    private Integer[][] readArray(){
+    private Integer[][] readArray() {
         String[] lines = textArea.getText().split("\n");
         Integer[][] edgesArray = new Integer[lines.length][];
         for (int i = 0; i < edgesArray.length; i++) {
@@ -104,7 +108,7 @@ public class SingleGraphApp extends Application {
             for (int j = 0; j < edgesArray[i].length; j++) {
                 try {
                     edgesArray[i][j] = Integer.parseInt(temp[j].trim());
-                } catch (NumberFormatException e) {
+                } catch(NumberFormatException e) {
                     AlertBox.display("Wrong input!", "Oops!");
                     pngPathField.setText("");
                     return null;
@@ -112,10 +116,6 @@ public class SingleGraphApp extends Application {
             }
         }
         return edgesArray;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" maxHeight="-Infinity" maxWidth="-Infinity"
           minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" vgap="10"
-          xmlns="http://javafx.com/javafx/8.0.31" fx:controller="ui.graphApp.cycles.CyclesTaskController">
+          xmlns="http://javafx.com/javafx/8.0.31" fx:controller="ui.graphHelperApp.cycles.CyclesTaskController">
     <columnConstraints>
         <ColumnConstraints/>
     </columnConstraints>

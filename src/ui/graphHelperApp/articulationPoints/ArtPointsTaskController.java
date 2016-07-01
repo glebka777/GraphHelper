@@ -1,11 +1,11 @@
-package ui.graphApp.articulationPoints;
+package ui.graphHelperApp.articulationPoints;
 
-import ui.graphApp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.util.Tools;
+import ui.graphHelperApp.MainController;
 
 import java.io.File;
 import java.util.List;
@@ -24,7 +24,8 @@ public class ArtPointsTaskController {
     void initialize() {
         if (!artPoints.isEmpty()) {
             artPointsField.setText(artPoints.toString());
-        } else {
+        }
+        else {
             artPointsField.setText("Articulation points not found.");
         }
         File imageFile = new File(Tools.getGraphWithArtPointsPngPath());

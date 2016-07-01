@@ -1,4 +1,4 @@
-package ui.graphApp._tools;
+package ui.graphHelperApp._tools;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +19,7 @@ public class AlertBox {
         Label label = new Label();
         label.setText(message);
         Button closeButton = new Button("Close.");
-        closeButton.setOnAction(event -> window.close());
+        closeButton.setOnAction(event->window.close());
 
         VBox layout = new VBox(10);
         layout.getChildren().addAll(label, closeButton);

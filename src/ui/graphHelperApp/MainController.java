@@ -1,11 +1,5 @@
-package ui.graphApp;
+package ui.graphHelperApp;
 
-import ui.graphApp._tools.AlertBox;
-import ui.graphApp.articulationPoints.ArtPointsTaskController;
-import ui.graphApp.cycles.CyclesTaskController;
-import ui.graphApp.topologicalSort.ToposortTaskController;
-import logic.graph.Graph;
-import logic.graph.OrientedGraph;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,9 +12,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import logic.graph.Graph;
+import logic.graph.OrientedGraph;
 import logic.tasks.*;
 import logic.util.Tools;
 import logic.util.Visualizer;
+import ui.graphHelperApp._tools.AlertBox;
+import ui.graphHelperApp.articulationPoints.ArtPointsTaskController;
+import ui.graphHelperApp.cycles.CyclesTaskController;
+import ui.graphHelperApp.topologicalSort.ToposortTaskController;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,10 +30,10 @@ public class MainController {
     public static Stage taskStage = new Stage();
 
     @FXML
-    private TextField ssspid1Field;
+    private TextField spId1Field;
 
     @FXML
-    private TextField ssspid2Field;
+    private TextField spId2Field;
 
     @FXML
     private ToggleButton weightedButton;
@@ -82,7 +82,8 @@ public class MainController {
         Graph graph = null;
         if (orientedButton.isSelected()) {
             graph = new OrientedGraph(graphTextArea.getText(), false);
-        } else {
+        }
+        else {
             graph = new Graph(graphTextArea.getText(), false);
         }
         if (!graph.contains(Integer.parseInt(nodeIdTextField.getText()))) {
@@ -107,7 +108,8 @@ public class MainController {
         Graph graph;
         if (orientedButton.isSelected()) {
             graph = new OrientedGraph(graphTextArea.getText(), false);
-        } else {
+        }
+        else {
             graph = new Graph(graphTextArea.getText(), false);
         }
         if (!graph.contains(Integer.parseInt(nodeIdTextField.getText()))) {
@@ -130,7 +132,8 @@ public class MainController {
         if (orientedButton.isSelected()) {
             graph = new OrientedGraph(graphTextArea.getText(), false);
             Visualizer.visualizeOrientedGraph((OrientedGraph) graph);
-        } else {
+        }
+        else {
             graph = new Graph(graphTextArea.getText(), false);
             Visualizer.visualizeGraph(graph);
         }
@@ -147,8 +150,8 @@ public class MainController {
         BFSViewBox.setImage(null);
 
         nodeIdTextField.setText("1");
-        ssspid1Field.setText("1");
-        ssspid2Field.setText("1");
+        spId1Field.setText("1");
+        spId2Field.setText("1");
         graphTextArea.setText("");
         DFSTextField.setText("");
         BFSTextField.setText("");
@@ -230,9 +233,9 @@ public class MainController {
             orientedButton.setSelected(true);
             toggleGraph();
         }
-        ToposortTaskController.sortedNodes = TopoSorter.sort(new OrientedGraph(graphTextArea.getText(), false));
+        ToposortTaskController.sortedNodes = TopoSorter.sortGraph(new OrientedGraph(graphTextArea.getText(), false));
         Parent root = FXMLLoader.load(getClass().getResource("topologicalSort/toposort.fxml"));
-        taskStage.setTitle("Topological sort.");
+        taskStage.setTitle("Topological sortGraph.");
         taskStage.setScene(new Scene(root, 1280, 800));
         taskStage.show();
         Tools.clearFolders();
@@ -248,7 +251,7 @@ public class MainController {
             toggleGraph();
         }
         ArtPointsTaskController.artPoints = ArticulationPointFinder.findArtPoints(new Graph(graphTextArea.getText(), false));
-        Parent root = FXMLLoader.load(getClass().getResource("articulationPoints/artPoints.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("articulationPoints/art_points.fxml"));
         taskStage.setTitle("Articulation points");
         taskStage.setScene(new Scene(root, 1280, 800));
         taskStage.show();
@@ -277,7 +280,7 @@ public class MainController {
         if (graphTextArea.getText().isEmpty() || graphTextArea.getText().split("\n").length == 1) {
             return;
         }
-        if (!ssspid1Field.getText().matches("[0-9]+") || !ssspid2Field.getText().matches("[0-9]+")) {
+        if (!spId1Field.getText().matches("[0-9]+") || !spId2Field.getText().matches("[0-9]+")) {
             return;
         }
         if (!orientedButton.isSelected()) {
@@ -285,18 +288,19 @@ public class MainController {
             toggleGraph();
         }
         OrientedGraph graph = new OrientedGraph(graphTextArea.getText(), false);
-        if (!graph.contains(Integer.parseInt(ssspid1Field.getText()))
-                || !graph.contains(Integer.parseInt(ssspid2Field.getText()))) {
+        if (!graph.contains(Integer.parseInt(spId1Field.getText()))
+                || !graph.contains(Integer.parseInt(spId2Field.getText()))) {
             AlertBox.display("Wrong ID", "Enter existing ID.");
             return;
         }
-        if (ShortestPathFinder.findShortestPath(graph, Integer.parseInt(ssspid1Field.getText()),
-                Integer.parseInt(ssspid2Field.getText()))) {
-            Parent root = FXMLLoader.load(getClass().getResource("sssp/sssp.fxml"));
+        if (ShortestPathFinder.findShortestPath(graph, Integer.parseInt(spId1Field.getText()),
+                Integer.parseInt(spId2Field.getText()))) {
+            Parent root = FXMLLoader.load(getClass().getResource("shortestPath/shortest_path.fxml"));
             taskStage.setTitle("Single source shortest path");
             taskStage.setScene(new Scene(root, 1280, 800));
             taskStage.show();
-        } else {
+        }
+        else {
             AlertBox.display("Path not found", "There is no such path");
         }
         Tools.clearFolders();
@@ -317,7 +321,8 @@ public class MainController {
             taskStage.setTitle("Tree");
             taskStage.setScene(new Scene(root, 1280, 800));
             taskStage.show();
-        } else {
+        }
+        else {
             AlertBox.display("Tree not found", "There is no tree in graph :(");
         }
         Tools.clearFolders();

@@ -49,10 +49,10 @@ public class ArticulationPointFinder {
                         artPointList.add(graphNode.getId());
                     }
                 }
-            } else
-                if (neighbour != graphNode.getParent()) {
-                    graphNode.setLow(Math.min(graphNode.getLow(), neighbour.getStartTime()));
-                }
+            }
+            else if (neighbour != graphNode.getParent()) {
+                graphNode.setLow(Math.min(graphNode.getLow(), neighbour.getStartTime()));
+            }
         }
     }
 

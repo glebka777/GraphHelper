@@ -1,30 +1,10 @@
 package logic.util;
 
-import logic.graph.Graph;
-import logic.graph.OrientedGraph;
-import logic.tasks.TreeFinder;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
 public class Tools {
-
-    public static void main(String[] args) {
-        clearFolders();
-        testGraph();
-//        testOrientedGraph();
-    }
-
-    public static void testGraph() {
-        Graph graph = new Graph("_files/txts/graph.txt", true);
-        System.out.println(TreeFinder.findTree(graph));
-    }
-
-    public static void testOrientedGraph() {
-        OrientedGraph graph = new OrientedGraph("_files/txts/graph.txt", true);
-        System.out.println(graph.toString());
-    }
 
     public static void clearFolders() {
         try {
@@ -34,7 +14,7 @@ public class Tools {
             Files.deleteIfExists(new File("_files/dots/dfs.dot").toPath());
             Files.deleteIfExists(new File("_files/dots/SCC.dot").toPath());
             Files.deleteIfExists(new File("_files/dots/transposedGraph.dot").toPath());
-            Files.deleteIfExists(new File("_files/dots/sortedgraph.dot").toPath());
+            Files.deleteIfExists(new File("_files/dots/sortedGraph.dot").toPath());
             Files.deleteIfExists(new File("_files/dots/CSCGraph.dot").toPath());
             Files.deleteIfExists(new File("_files/dots/graphWithArtPoints.dot").toPath());
             Files.deleteIfExists(new File("_files/dots/graphWithShortestPath.dot").toPath());
@@ -43,7 +23,7 @@ public class Tools {
             Files.deleteIfExists(new File("_files/pngs/graph.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/bfs.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/dfs.png").toPath());
-            Files.deleteIfExists(new File("_files/pngs/sortedgraph.png").toPath());
+            Files.deleteIfExists(new File("_files/pngs/sortedGraph.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/SCC.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/transposedGraph.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/CSCGraph.png").toPath());
@@ -51,7 +31,7 @@ public class Tools {
             Files.deleteIfExists(new File("_files/pngs/graphWithShortestPath.png").toPath());
             Files.deleteIfExists(new File("_files/pngs/graphWithTree.png").toPath());
 
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
     }
@@ -102,13 +82,16 @@ public class Tools {
         if (withChars == 1) {
             if (weighted) {
                 graph = getRandomWeightedGraphWithChars();
-            } else {
+            }
+            else {
                 graph = getRandomUnweightedGraphWithChars();
             }
-        } else {
+        }
+        else {
             if (weighted) {
                 graph = getRandomWeightedGraph();
-            } else {
+            }
+            else {
                 graph = getRandomUnweightedGraph();
             }
         }
@@ -126,7 +109,8 @@ public class Tools {
             firstNode = String.valueOf(indexOfFirstNode);
             if (indexOfSecondNode == 0) {
                 secondNode = " ";
-            } else {
+            }
+            else {
                 secondNode = String.valueOf(indexOfSecondNode);
             }
             edges[i] = firstNode + " " + secondNode;
@@ -150,12 +134,14 @@ public class Tools {
             firstNode = String.valueOf(indexOfFirstNode);
             if (indexOfSecondNode == 0) {
                 secondNode = " ";
-            } else {
+            }
+            else {
                 secondNode = String.valueOf(indexOfSecondNode);
             }
             if (!secondNode.equals(" ")) {
                 edges[i] = firstNode + " " + secondNode + " " + String.valueOf(weight);
-            } else {
+            }
+            else {
                 edges[i] = firstNode;
             }
         }
@@ -177,7 +163,8 @@ public class Tools {
             firstNode = (char) (indexOfFirstNode + 97);
             if (indexOfSecondNode > 9) {
                 secondNode = ' ';
-            } else {
+            }
+            else {
                 secondNode = (char) (indexOfSecondNode + 97);
             }
             edges[i] = firstNode + " " + secondNode;
@@ -201,12 +188,14 @@ public class Tools {
             firstNode = (char) (indexOfFirstNode + 97);
             if (indexOfSecondNode > 9) {
                 secondNode = ' ';
-            } else {
+            }
+            else {
                 secondNode = (char) (indexOfSecondNode + 97);
             }
             if (secondNode != ' ') {
                 edges[i] = firstNode + " " + secondNode + " " + String.valueOf(weight);
-            } else {
+            }
+            else {
                 edges[i] = firstNode + " ";
             }
         }

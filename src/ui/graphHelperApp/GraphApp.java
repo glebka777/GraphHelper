@@ -1,4 +1,4 @@
-package ui.graphApp;
+package ui.graphHelperApp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,7 @@ public class GraphApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("graphApp.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("graph_app.fxml"));
         primaryStage.setTitle("Graphs application");
         primaryStage.setScene(new Scene(root, 1920, 1080));
         primaryStage.setMaximized(true);

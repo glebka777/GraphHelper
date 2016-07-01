@@ -1,14 +1,17 @@
-package ui.graphApp.sssp;
+package ui.graphHelperApp.SCC;
 
-import ui.graphApp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.util.Tools;
+import ui.graphHelperApp.MainController;
 
 import java.io.File;
 
-public class SSSPTaskController {
+public class SCCTaskController {
+
+    @FXML
+    private ImageView cscViewBox;
 
     @FXML
     private ImageView graphViewBox;
@@ -16,8 +19,12 @@ public class SSSPTaskController {
     @FXML
     void initialize() {
 
-        File imageFile = new File(Tools.getGraphWithShortestPathPath());
+        File imageFile = new File(Tools.getCscPngPath());
         Image image = new Image(imageFile.toURI().toString());
+        cscViewBox.setImage(image);
+
+        imageFile = new File(Tools.getCscGraphPngPath());
+        image = new Image(imageFile.toURI().toString());
         graphViewBox.setImage(image);
 
     }
@@ -28,5 +35,3 @@ public class SSSPTaskController {
     }
 
 }
-
-

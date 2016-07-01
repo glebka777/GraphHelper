@@ -1,10 +1,10 @@
-package ui.graphApp.tree;
+package ui.graphHelperApp.tree;
 
-import ui.graphApp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.util.Tools;
+import ui.graphHelperApp.MainController;
 
 import java.io.File;
 

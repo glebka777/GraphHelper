@@ -26,14 +26,12 @@ public class Graph {
         if (isFromFile) {
             String strFromFile = readEdges(graph);
             lines = strFromFile.split("\n");
-        } else {
+        }
+        else {
             lines = graph.split("\n");
         }
         edges = new String[lines.length - 1];
         System.arraycopy(lines, 1, edges, 0, lines.length - 1);
-        /*if (edges.length == 1) {
-            return;
-        }*/
         for (String edge : edges) {
             bunchNodes(edge);
         }
@@ -44,16 +42,16 @@ public class Graph {
         }
     }
 
-    public Graph(Integer[][] edgesArray){
+    public Graph(Integer[][] edges) {
         time = 0;
         nodeList = new Vector<>();
         edgeList = new Vector<>();
         nodeList.add(new GraphNode(0));
         List<String> tempEdges = new LinkedList<>();
-        for (int i = 0; i < edgesArray.length; i++) {
-            for (int j = 0; j < edgesArray[i].length; j++) {
-                if (edgesArray[i][j] == 1){
-                    tempEdges.add(Integer.toString(i+1) + " " + Integer.toString(j+1));
+        for (int i = 0; i < edges.length; i++) {
+            for (int j = 0; j < edges[i].length; j++) {
+                if (edges[i][j] == 1) {
+                    tempEdges.add(Integer.toString(i + 1) + " " + Integer.toString(j + 1));
                 }
             }
         }
@@ -92,7 +90,8 @@ public class Graph {
                         + edge.getFirstNode()
                         + "-----"
                         + edge.getSecondNode();
-            } else {
+            }
+            else {
                 string = string
                         + edge.getFirstNode()
                         + "--(" + edge.getWeight() + ")--"
@@ -123,7 +122,7 @@ public class Graph {
                     graphNode.setVisited(false);
                 }
             }
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         Visualizer.createPNG("_files/dots/dfs.dot", "dfs");
@@ -154,7 +153,7 @@ public class Graph {
                     graphNode.setVisited(false);
                 }
             }
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         Visualizer.createPNG("_files/dots/bfs.dot", "bfs");
@@ -170,13 +169,13 @@ public class Graph {
             public int compare(Graph.GraphNode o1, Graph.GraphNode o2) {
                 if ((o1 == null) && (o2 != null)) {
                     return 1;
-                } else
-                    if ((o1 != null) && (o2 == null)) {
-                        return -1;
-                    } else
-                        if ((o1 == null)) {
-                            return 0;
-                        }
+                }
+                else if ((o1 != null) && (o2 == null)) {
+                    return -1;
+                }
+                else if ((o1 == null)) {
+                    return 0;
+                }
                 return o1.getEndTime() > o2.getEndTime() ? -1 : o1.getEndTime() < o2.getEndTime() ? 1 : 0;
             }
         });
@@ -255,13 +254,15 @@ public class Graph {
             if (!this.contains(nodes[0])) {
                 firstNode = new GraphNode(nodeList.size(), nodes[0]);
                 nodeList.add(firstNode);
-            } else {
+            }
+            else {
                 firstNode = this.getNodeList().get(this.getGraphNodeIdByData(nodes[0]));
             }
             if (!this.contains(nodes[1])) {
                 secondNode = new GraphNode(nodeList.size(), nodes[1]);
                 nodeList.add(secondNode);
-            } else {
+            }
+            else {
                 secondNode = this.getNodeList().get(this.getGraphNodeIdByData(nodes[1]));
             }
             firstNode.addNeighbour(secondNode.getId());
@@ -270,18 +271,19 @@ public class Graph {
                 if (getEdge(firstNode.getId(), secondNode.getId()) == null) {
                     edgeList.add(new Edge(firstNode.getId(), secondNode.getId(), Double.parseDouble(nodes[2]), true));
                 }
-            } else {
+            }
+            else {
                 if (getEdge(firstNode.getId(), secondNode.getId()) == null) {
                     edgeList.add(new Edge(firstNode.getId(), secondNode.getId(), 0, true));
                 }
             }
-        } else
-            if (nodes.length == 1) {
-                if (!this.contains(nodes[0])) {
-                    GraphNode firstNode = new GraphNode(nodeList.size(), nodes[0]);
-                    nodeList.add(firstNode);
-                }
+        }
+        else if (nodes.length == 1) {
+            if (!this.contains(nodes[0])) {
+                GraphNode firstNode = new GraphNode(nodeList.size(), nodes[0]);
+                nodeList.add(firstNode);
             }
+        }
     }
 
     protected int getCurrentTime() {
@@ -335,7 +337,7 @@ public class Graph {
                 edges += "\n";
             }
             br.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         return edges;
@@ -466,13 +468,13 @@ public class Graph {
         private double weight;
         private boolean inPath;
         private boolean written;
-        private boolean biderected;
+        private boolean biDirected;
 
-        public Edge(int firstNode, int secondNode, double weight, boolean biderected) {
+        public Edge(int firstNode, int secondNode, double weight, boolean biDirected) {
             this.firstNode = firstNode;
             this.secondNode = secondNode;
             this.weight = weight;
-            this.biderected = biderected;
+            this.biDirected = biDirected;
         }
 
         public boolean isInPath() {
@@ -503,8 +505,8 @@ public class Graph {
             return weight;
         }
 
-        public boolean isBiderected() {
-            return biderected;
+        public boolean isBiDirected() {
+            return biDirected;
         }
     }
 

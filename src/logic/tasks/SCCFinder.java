@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*SCC - Strongly Connected Component(s)*/
+
 public class SCCFinder {
 
     private static OrientedGraph graph;
@@ -81,7 +83,7 @@ public class SCCFinder {
                     graphNode.setVisited(false);
                 }
             }
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         Visualizer.createPNG("_files/dots/SCC.dot", "SCC");

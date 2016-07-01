@@ -12,7 +12,7 @@ import java.util.Vector;
 public class Visualizer {
 
     public static void visualizeGraph(Graph graph) {
-        if (graph instanceof OrientedGraph){
+        if (graph instanceof OrientedGraph) {
             visualizeOrientedGraph((OrientedGraph) graph);
             return;
         }
@@ -31,7 +31,8 @@ public class Visualizer {
                             Graph.Edge edge = graph.getEdge(i, nodeList.get(i).getNeighbours().get(j));
                             if (edge.getWeight() != 0) {
                                 bw.write(i + "--" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                            } else {
+                            }
+                            else {
                                 bw.write(i + "--" + nodeList.get(i).getNeighbours().get(j) + ";");
                             }
                             bw.newLine();
@@ -45,7 +46,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -71,7 +72,8 @@ public class Visualizer {
                             Graph.Edge edge = graph.getEdge(i, nodeList.get(i).getNeighbours().get(j));
                             if (edge.getWeight() != 0) {
                                 bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                            } else {
+                            }
+                            else {
                                 bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + ";");
                             }
                             bw.newLine();
@@ -85,7 +87,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -97,7 +99,7 @@ public class Visualizer {
     }
 
     public static void visualizeMatrixGraph(Graph graph) {
-        if (graph instanceof OrientedGraph){
+        if (graph instanceof OrientedGraph) {
             visualizeMatrixOrientedGraph((OrientedGraph) graph);
             return;
         }
@@ -116,7 +118,8 @@ public class Visualizer {
                             Graph.Edge edge = graph.getEdge(i, nodeList.get(i).getNeighbours().get(j));
                             if (edge.getWeight() != 0) {
                                 bw.write(i + "--" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                            } else {
+                            }
+                            else {
                                 bw.write(i + "--" + nodeList.get(i).getNeighbours().get(j) + ";");
                             }
                             bw.newLine();
@@ -130,7 +133,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -156,7 +159,8 @@ public class Visualizer {
                             Graph.Edge edge = graph.getEdge(i, nodeList.get(i).getNeighbours().get(j));
                             if (edge.getWeight() != 0) {
                                 bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                            } else {
+                            }
+                            else {
                                 bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + ";");
                             }
                             bw.newLine();
@@ -170,7 +174,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -203,7 +207,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -249,7 +253,7 @@ public class Visualizer {
             bw.newLine();
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -287,7 +291,7 @@ public class Visualizer {
             bw.newLine();
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -319,7 +323,8 @@ public class Visualizer {
                     if (artPoints != null && artPoints.contains(nodeList.get(i).getId())) {
                         bw.write(nodeList.get(i).getId() + " [style=filled, fillcolor=green label = \"" + nodeList.get(i).getData() +
                                 "\\n [" + nodeList.get(i).getId() + "]\"]");
-                    } else {
+                    }
+                    else {
                         bw.write(nodeList.get(i).getId() + " [label = \"" + nodeList.get(i).getData() +
                                 "\\n [" + nodeList.get(i).getId() + "]\"]");
                     }
@@ -328,7 +333,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -355,16 +360,19 @@ public class Visualizer {
                             if (edge.getWeight() != 0) {
                                 if (!graph.getEdge(nodeList.get(i).getId(), nodeList.get(i).getNeighbours().get(j)).isInPath()) {
                                     bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                                } else {
+                                }
+                                else {
                                     bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + " color = green" + "];");
                                     bw.newLine();
                                     bw.write(nodeList.get(i).getId() + " [ color = green ]");
                                     bw.write(nodeList.get(i).getNeighbours().get(j) + " [ color = green ]");
                                 }
-                            } else {
+                            }
+                            else {
                                 if (!graph.getEdge(nodeList.get(i).getId(), nodeList.get(i).getNeighbours().get(j)).isInPath()) {
                                     bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + ";");
-                                } else {
+                                }
+                                else {
                                     bw.write(nodeList.get(i).getId() + "->" + nodeList.get(i).getNeighbours().get(j) + "[ color = green" + "];");
                                     bw.newLine();
                                     bw.write(nodeList.get(i).getId() + " [ color = green ]");
@@ -383,7 +391,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -411,16 +419,19 @@ public class Visualizer {
                                 if (edge.getWeight() != 0) {
                                     if (!graph.getEdge(nodeList.get(i).getId(), nodeList.get(i).getNeighbours().get(j)).isInPath()) {
                                         bw.write(nodeList.get(i).getId() + "--" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + "];");
-                                    } else {
+                                    }
+                                    else {
                                         bw.write(nodeList.get(i).getId() + "--" + nodeList.get(i).getNeighbours().get(j) + "[ label= " + edge.getWeight() + " color = orange" + "];");
                                         bw.newLine();
                                         bw.write(nodeList.get(i).getId() + " [ color = orange ]");
                                         bw.write(nodeList.get(i).getNeighbours().get(j) + " [ color = orange ]");
                                     }
-                                } else {
+                                }
+                                else {
                                     if (!graph.getEdge(nodeList.get(i).getId(), nodeList.get(i).getNeighbours().get(j)).isInPath()) {
                                         bw.write(nodeList.get(i).getId() + "--" + nodeList.get(i).getNeighbours().get(j) + ";");
-                                    } else {
+                                    }
+                                    else {
                                         bw.write(nodeList.get(i).getId() + "--" + nodeList.get(i).getNeighbours().get(j) + "[ color = orange" + "];");
                                         bw.newLine();
                                         bw.write(nodeList.get(i).getId() + " [ color = orange ]");
@@ -441,7 +452,7 @@ public class Visualizer {
             }
             bw.write("}");
             bw.close();
-        } catch (IOException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         for (Graph.GraphNode graphNode : nodeList) {
@@ -460,16 +471,17 @@ public class Visualizer {
 
     public static void createPNG(String fileName, String pngType) {
         String[] args;
-        if (pngType.equals("matrixGraph")){
+        if (pngType.equals("matrixGraph")) {
             args = new String[]{"sfdp", "-x", "-Goverlap=scale", "-Tpng", fileName, "-o", "_files/pngs/" + pngType + ".png"};
-        } else {
+        }
+        else {
             args = new String[]{"dot", "-Tpng", "-Gsize=3,5\\!", "-Gdpi=300", fileName, "-o", "_files/pngs/" + pngType + ".png"};
         }
         try {
             Runtime rt = Runtime.getRuntime();
             Process dotCall = rt.exec(args);
             dotCall.waitFor();
-        } catch (IOException | InterruptedException e) {
+        } catch(IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -482,19 +494,19 @@ public class Visualizer {
             int node = scc.get(i);
             if (node != -1) {
                 bw.write(" " + node + "; ");
-            } else
-                if (i != scc.size() - 1 && scc.get(i + 1) != -1) {
-                    bw.newLine();
-                    bw.write(" label = SCC_" + sccCounter + ";");
-                    bw.newLine();
-                    bw.write("graph[style=rounded, color=blue];");
-                    bw.newLine();
-                    bw.write(" }");
-                    bw.newLine();
-                    sccCounter++;
-                    bw.write(" subgraph cluster_SCC" + sccCounter + " {");
-                    bw.newLine();
-                }
+            }
+            else if (i != scc.size() - 1 && scc.get(i + 1) != -1) {
+                bw.newLine();
+                bw.write(" label = SCC_" + sccCounter + ";");
+                bw.newLine();
+                bw.write("graph[style=rounded, color=blue];");
+                bw.newLine();
+                bw.write(" }");
+                bw.newLine();
+                sccCounter++;
+                bw.write(" subgraph cluster_SCC" + sccCounter + " {");
+                bw.newLine();
+            }
         }
         bw.newLine();
         bw.write(" label = SCC_" + sccCounter + ";");

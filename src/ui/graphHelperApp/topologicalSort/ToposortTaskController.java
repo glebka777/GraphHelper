@@ -1,12 +1,12 @@
-package ui.graphApp.topologicalSort;
+package ui.graphHelperApp.topologicalSort;
 
-import ui.graphApp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.util.Tools;
+import ui.graphHelperApp.MainController;
 
 import java.io.File;
 import java.util.List;
@@ -33,8 +33,9 @@ public class ToposortTaskController {
             Image image = new Image(imageFile.toURI().toString());
             toposortBox.setImage(image);
 
-        } else {
-            sortedNodesField.setText("Topo sort is impossible.");
+        }
+        else {
+            sortedNodesField.setText("Topological sort is impossible.");
         }
     }
 

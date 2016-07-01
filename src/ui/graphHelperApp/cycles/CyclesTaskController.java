@@ -1,9 +1,9 @@
-package ui.graphApp.cycles;
+package ui.graphHelperApp.cycles;
 
-import ui.graphApp.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import ui.graphHelperApp.MainController;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,8 @@ public class CyclesTaskController {
             for (String backEdge : backEdges) {
                 backEdgesTextField.appendText(backEdge + '\n');
             }
-        } else {
+        }
+        else {
             backEdgesTextField.setText("Graph is acyclic.");
         }
     }

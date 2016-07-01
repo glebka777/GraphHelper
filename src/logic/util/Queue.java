@@ -3,10 +3,10 @@ package logic.util;
 import java.lang.reflect.Array;
 
 public class Queue<T> {
-    int size;
-    int head;
-    int tail;
-    T[] data;
+    private int size;
+    private int head;
+    private int tail;
+    private T[] data;
 
     public Queue(T element, int size) {
         Class TClass = element.getClass();
